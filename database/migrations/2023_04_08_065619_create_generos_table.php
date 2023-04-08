@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('generos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->increments('id');
+            $table->string('tipo', 100);
         });
     }
 
