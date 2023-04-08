@@ -17,10 +17,11 @@ return new class extends Migration
             $table->string('apellidos', 100);
             $table->string('direccion', 100);
             $table->integer('telefono')->length(10)->unique();
+            $table->string('email', 100)->unique();
             $table->string('fecha_nac', 100);
 
-            $table->unsignedInteger('carrera')->nullable();
-            $table->foreign('carrera')->references('id')->on('carreras');
+            $table->unsignedInteger('id_carrera')->nullable();
+            $table->foreign('id_carrera')->references('id')->on('carreras');
 
             $table->unsignedInteger('id_genero')->nullable();
             $table->foreign('id_genero')->references('id')->on('generos');
