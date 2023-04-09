@@ -33,7 +33,7 @@
                     <input type="text" class="form-control shadow-none" id="nombre" name="nombre" 
                     value="{{ old('tipo', $carrera->nombre) }}">
                     @error('nombre')
-                        <small class="text-danger">
+                        <small class="text-danger" role="alert">
                             {{ $message }}
                         </small>
                     @enderror

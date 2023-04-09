@@ -11,7 +11,7 @@ class Alumno extends Model
 
     protected $table = 'alumnos';
     protected $primaryKey = 'id';
-    protected $fillable = ['nombres','apellidos','dirreccion','telefono','email','fecha_nac','id_carrera','id_genero'];
+    protected $fillable = ['nombres','apellidos','direccion','telefono','email','fecha_nac','id_carrera','id_genero'];
 
     // para eliminir los campos de creacion y actualizacion que vienen por defecto
     public $timestamps = false ;

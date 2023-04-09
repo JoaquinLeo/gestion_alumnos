@@ -40,15 +40,15 @@
                     <ul class="navbar-nav ms-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Alumnos</a>
+                            <a class="nav-link {{ request()->is('alumnos*') ? 'active' : ''}} " href="{{ route('alumnos.index') }}">Alumnos</a>
                         </li>    
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('carreras.index') }}">Carreras</a>
+                            <a class="nav-link {{ request()->is('carreras*') ? 'active' : ''}} " href="{{ route('carreras.index') }}">Carreras</a>
                         </li>     
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('generos.index') }}">Generos</a>
+                            <a class="nav-link {{ request()->is('generos*') ? 'active' : ''}} " href="{{ route('generos.index') }}">Generos</a>
                         </li>     
 
                     </ul>

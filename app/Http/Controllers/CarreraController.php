@@ -83,6 +83,7 @@ class CarreraController extends Controller
      */
     public function destroy(Carrera $carrera)
     {
-        //
+        $carrera->delete();
+        return back()->with('danger','Carrera eliminada correctamente');
     }
 }
