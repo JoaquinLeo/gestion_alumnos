@@ -16,7 +16,7 @@ use App\Http\Controllers\AlumnoController;
 */
 
 Route::get('/', function () {
-    return redirect('/generos');
+    return redirect('/alumnos');
 }); 
 
 Route::resource('generos', GeneroController::class ); 

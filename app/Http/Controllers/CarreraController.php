@@ -12,7 +12,8 @@ class CarreraController extends Controller
      */
     public function index()
     {
-        //
+        $carreras = Carrera::orderBy('id','ASC')->paginate(5);
+        return view('carreras.index', ['carreras' => $carreras]);
     }
 
     /**
@@ -20,7 +21,7 @@ class CarreraController extends Controller
      */
     public function create()
     {
-        //
+        return view('carreras.create');
     }
 
     /**
@@ -28,7 +29,15 @@ class CarreraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|min:3|max:100|unique:carreras'
+        ]);
+
+        Carrera::create($request->all());
+
+        return redirect()
+                ->route('carreras.index')
+                ->with('success','Carrera registrada correctamente.');
     }
 
     /**
@@ -36,7 +45,7 @@ class CarreraController extends Controller
      */
     public function show(Carrera $carrera)
     {
-        //
+        return view('carreras.show',['carrera'=>$carrera]);
     }
 
     /**
@@ -44,7 +53,7 @@ class CarreraController extends Controller
      */
     public function edit(Carrera $carrera)
     {
-        //
+        return view('carreras.edit',['carrera'=>$carrera]);
     }
 
     /**
@@ -52,7 +61,21 @@ class CarreraController extends Controller
      */
     public function update(Request $request, Carrera $carrera)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|min:3|max:100|unique:carreras,nombre,'.$carrera->id.',id'
+        ]);
+
+        $carrera->fill($request->only([
+            'nombre'
+        ]));
+
+        if($carrera->isClean()){
+            return back()->with('warning','Debe realizar al menos un cambio para actualizar');
+        }
+
+        $carrera->update($request->all());
+
+        return back()->with('success','Carrera actualizada correctamente.');
     }
 
     /**
