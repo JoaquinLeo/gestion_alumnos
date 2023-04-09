@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\GeneroController;
+use App\Http\Controllers\CarreraController;
+use App\Http\Controllers\AlumnoController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return redirect('/generos');
+}); 
+
+Route::resource('generos', GeneroController::class ); 
+Route::resource('carreras', CarreraController::class ); 
+Route::resource('alumnos', AlumnoController::class ); 
 
 

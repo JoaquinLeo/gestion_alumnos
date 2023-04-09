@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('generos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tipo', 100);
+            $table->string('tipo', 100)->unique();;
         });
     }
 
